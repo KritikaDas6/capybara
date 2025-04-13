@@ -129,20 +129,6 @@ function editCardContent(card, dog) {
   console.log("new card:", dog.name, "- html: ", card);
 }
 
-
-// function editCardContent(card, newTitle, newImageURL) {
-//   card.style.display = "block";
-
-//   const cardHeader = card.querySelector("h2");
-//   cardHeader.textContent = newTitle;
-
-//   const cardImage = card.querySelector("img");
-//   cardImage.src = newImageURL;
-//   cardImage.alt = newTitle + " Poster";
-
-//   console.log("new card:", newTitle, "- html: ", card);
-// }
-
 document.addEventListener("DOMContentLoaded", showCards);
 
 
