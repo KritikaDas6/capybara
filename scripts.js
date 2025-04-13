@@ -101,6 +101,7 @@ function sortNames() {   //sorts from A to Z
       };
     }
   } 
+
   for (let m = 0; m < fosterDogs.length; m++) {
     const firstLetter = fosterDogs[m].name[0];
     console.log(`Index ${m}: First letter = ${firstLetter}`);

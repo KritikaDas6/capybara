@@ -69,29 +69,6 @@ h1 {
   font-family: "Copperplate", fantasy;
 }
 
-/* .sort-button {
-  background-color: #95A8AC;
-  color: #223745;
-  text-align: center;
-  float: left;
-  border-left: 0.1px solid #223745;
-  border-top: 0.1px solid #223745;
-  outline: none;
-  cursor: pointer;
-  padding: 10px 14px;
-  font-family: "Copperplate", fantasy;
-  font-size: 18px;
-  width: 33.33333%;
-  margin-bottom: 20px;
-}
-
-.sort-button:hover {
-  background-color: #223745;
-  color: #ECEBE2;
-  border-top: 0.1px solid white;
-  font-family: "Copperplate", fantasy;
-} */
-
 .homeImg {
   margin: 35px 15px 20px 15px;
 }
@@ -103,8 +80,6 @@ h1 {
   overflow: hidden;
   float: left;
 }
-
-
 
 #card-container {
   display: flex;
@@ -133,12 +108,17 @@ h1 {
 }
 
 .card-content h2 {
-  margin-top: 0;
-  background-color:#95A8AC;
+  margin: 0 0 10px 0; 
+  padding: 5px 10px;   
+  background-color: #95A8AC;
   font-size: 20px;
+  border-radius: 4px;
 }
 
 .card img {
-  width: 50%;
+  width: 100%;
   height: auto;
-} 
+  border: 2px solid #223745;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
