@@ -1,47 +1,59 @@
+<!-- Home Page -->
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <html>
   <head>
-    <title>KD TV SHOWS | MOM</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    
+    <title> Foster Tails </title>
+   
+  
+    <link href="style.css"
+    rel="stylesheet" 
+    type="text/css" />
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
+
+
   </head>
-
+ 
   <body>
-    <header class="header" id="header">
-      <div class="logo">
-        </div>
-      <div class="menu-hamburger" id="toggle">
+    <div class="layout">
+		<!-- Header -->
+      <div class= "header">
+        <img class = "icon" src="/assets/AV4.png" width="25%">
+        <a class= "link" href= "./index.html"> 
+          <h1> Foster Tails </h1> 
+        </a>
+      </div>
+
+    <!---main page--->
+      <div class= "tabs">
+
+        <a href="./index.html"> <button class="tablink" id="defaultOpen"> Home </button></a>
+        <a href = "./store.html"> <button class="tablink">Chat Bot</button></a>
+        <a href = "./form.html"> <button class="tablink">Game</button></a>
 
       </div>
-      <nav class="navbar" id="navbar">
-          <ul class="navbar-list" id="primary-navbar" data-visiable="false">
-              <li><a href="#banner" class="navbar-links">Home</a></li>
-              <li><a href="#overview" class="navbar-links">Overview</a></li>
-              <li><a href="#practice" class="navbar-links">Practice</a></li>
-              <li><a href="#feedback" class="navbar-links">Feedback</a></li>
-              <li><a href="#courses" class="btn btn-get-courses"><span>Set Up</span></a></li>
-          </ul>
-      </nav>
-  </header>
-    <!-- <header class="main-header">
-      <h1 class="title">KD TV Shows</h1>
-    </header> -->
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
+      
+      
+      <div id="card-container">
+        <div class="card template-card" style="display: none">
+          <div class="card-content">
+            <h2>TV Show Title</h2>
+            <img src="" alt="Poster" /> 
+              <ul>
+              <li>Bullet 1</li>
+              <li>Bullet 2</li>
+              <li>Bullet 3</li>
+              </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
-  </body>
+
+  <script src="scripts.js"></script>
+ </body>
 </html>
