@@ -22,22 +22,42 @@
  *    with the string you added to the array, but a broken image.
  *
  */
-console.log("✅ JavaScript is running!");
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg"; 
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Mresh Prince of Bel Air",
-  "Lurb Your Enthusiasm",
-  "Kast Los High",
-  "ringstop",
-  "rapyfly",
-  "Cope",
-  "Aristro",
+
+class Dog{
+  constructor(name, gender, age, size, image){
+    this.name= name;
+    this.gender = gender;
+    this.age=age;
+    this.size=size;
+    this.image= image;
+  }
+
+  getGender(){
+    if(this.gender===true){  //js
+      return "Female";
+    }
+    return "Male";
+  }
+}
+
+
+const fosterDogs = [
+  new Dog("Motley", true, 2, "Small", "https://placedog.net/400?id=1"),
+  new Dog("Nila", true, 5, "Big", "https://placedog.net/400?id=2"),
+  new Dog("Gilbert", true, 1, "Small", "https://placedog.net/400?id=3"),
+  new Dog("Milo", false, 6, "Big", "https://placedog.net/400?id=4"),
+  new Dog("Daisy", false, 3, "Medium", "https://placedog.net/400?id=5"),
+  new Dog("Sandie", true, 4, "Small", "https://placedog.net/400?id=6"),
+  new Dog("Ollie", false, 2, "Big", "https://placedog.net/400?id=7"),
+  new Dog("Harris", true, 1, "Small", "https://placedog.net/400?id=8"),
+  new Dog("Jaadu", false, 5, "Medium", "https://placedog.net/400?id=9"),
+  new Dog("Posie", false, 2, "Small", "https://placedog.net/400?id=10"),
+  new Dog("Nala", true, 6, "Big", "https://placedog.net/400?id=11"),
+  new Dog("Wall-e", false, 3, "Medium", "https://placedog.net/400?id=12"),
+  new Dog("Capy-pug", true, 1, "Small", "https://placedog.net/400?id=13"),
+  new Dog("Bailey", false, 4, "Big", "https://placedog.net/400?id=14"),
+  new Dog("Pintu", false, 3, "Medium", "https://placedog.net/400?id=15")
 ];
 
 const templateCard = document.querySelector(".template-card"); 
@@ -50,60 +70,82 @@ function showCards() {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = ""; // Clear existing cards
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+  for (let i = 0; i < fosterDogs.length; i++) {
+    // let title = titles[i];
 
-    let imageURL = "";
-    if (i === 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i === 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i === 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
+    // let imageURL = "";
+    // if (i === 0) {
+    //   imageURL = FRESH_PRINCE_URL;
+    // } else if (i === 1) {
+    //   imageURL = CURB_POSTER_URL;
+    // } else if (i === 2) {
+    //   imageURL = EAST_LOS_HIGH_POSTER_URL;
+    // }
 
+    const dog = fosterDogs[i];
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL);    // Update title and image
+    editCardContent(nextCard, dog);    // Update title and image
     cardContainer.appendChild(nextCard);           // Add to the DOM
   }
 }
 
 function sortNames() {   //sorts from A to Z
-  let letter_indx=0;  
+  // let letter_indx= fosterDogs[m].name[0]; 
   let swap="";
-  for (let i = 0; i < titles.length-1; i++) {
-    for(let j=0; j< titles.length-i-1; j++){
-      if( (titles[j][letter_indx]).toLowerCase() > (titles[j+1][letter_indx]).toLowerCase() ){  //
-        swap= titles[j];
-        titles[j]= titles[j+1];
-        titles[j+1]=swap;
+  for (let i = 0; i < fosterDogs.length-1; i++) {
+    for(let j=0; j< fosterDogs.length-i-1; j++){
+      if(fosterDogs[j].name.toLowerCase() > fosterDogs[j+1].name.toLowerCase()){  
+        swap= fosterDogs[j];
+        fosterDogs[j]= fosterDogs[j+1];
+        fosterDogs[j+1]=swap;
       };
     }
   } 
-  for(let m=0; m<titles.length;m++){
-    const firstLetter = titles[m][0];
-    console.log(`Index ${m}: First letter = ${firstLetter}`)
-  } 
-
+  for (let m = 0; m < fosterDogs.length; m++) {
+    const firstLetter = fosterDogs[m].name[0];
+    console.log(`Index ${m}: First letter = ${firstLetter}`);
+  }
+  showCards();
 }
 
+document.getElementById("sortButton").addEventListener("click", function (e) {
+  e.preventDefault();
+  sortNames();
+});
 
-
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, dog) {
   card.style.display = "block";
 
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+  card.querySelector("h2").textContent = dog.name;
+  card.querySelector("img").src = dog.image;
+  card.querySelector("img").alt = `${dog.name}'s photo`;
 
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  console.log("new card:", newTitle, "- html: ", card);
+  card.querySelector("ul").innerHTML = `
+    <li><strong>Gender:</strong> ${dog.getGender()}</li>
+    <li><strong>Age:</strong> ${dog.age}</li>
+    <li><strong>Size:</strong> ${dog.size}</li>
+  `;
+  console.log("new card:", dog.name, "- html: ", card);
 }
 
+
+// function editCardContent(card, newTitle, newImageURL) {
+//   card.style.display = "block";
+
+//   const cardHeader = card.querySelector("h2");
+//   cardHeader.textContent = newTitle;
+
+//   const cardImage = card.querySelector("img");
+//   cardImage.src = newImageURL;
+//   cardImage.alt = newTitle + " Poster";
+
+//   console.log("new card:", newTitle, "- html: ", card);
+// }
+
 document.addEventListener("DOMContentLoaded", showCards);
-sortNames()
+
+
+
 
 // function quoteAlert() {
 //   console.log("Button Clicked!");
