@@ -27,14 +27,26 @@
         </div>
         <img class="logo-fixed" src="/assets/logo.png" height="14%">
         <div class="menu-buttons">
-        <button class="tablink" id="sortButton">Sort by Name</button>
-        <button class="tablink">Chat Bot</button>
-        <button class="tablink">Game</button>
+        <button class="tablink" id="sortNameButton">Sort Alphabetical</button>
+        <button class="tablink" id="sortAgeButton">Youngest to Oldest</button>
+        <button class="tablink" id="sortFemaleButton">Only Females</button>
+        <button class="tablink" id="sortSmallDogsButton">Only Small Dogs</button>
+        
+        <button class="tablink" id="searchToggleButton">Search by Name</button>
+
+        <div id="searchContainer" style="display: none; margin-top: 10px;">
+          <input type="text" id="searchInput" placeholder="Enter dog name..." />
+          <button id="searchButton">Search</button>
         </div>
+        <button class="tablink" id="selectFoster">Select Dog to Foster</button>
+        </div>
+        <p class="menubar-message">
+          Every foster dog deserves a second chance. <br />
+          Thank you to our amazing volunteers for helping them find their forever homes!
+        </p>
       </div>
     
-    
-  
+
       
       <div id="card-container">
         <div class="card template-card" style="display: none">
@@ -42,13 +54,16 @@
             <h2>Foster Dog Name</h2>
             <img src="" alt="Poster" /> 
               <ul>
-              <li>Bullet 1</li>
-              <li>Bullet 2</li>
-              <li>Bullet 3</li>
+              <li>Age</li>
+              <li>Gender</li>
+              <li>Size</li>
               </ul>
           </div>
-        </div>
+        </div>  
       </div>
+      <p id="noName" class="no-match">Woof. Try a different name!</p>
+
+
     </div>
 
   <script src="scripts.js"></script>

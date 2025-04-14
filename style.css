@@ -11,9 +11,6 @@ body {
   color: #223745;
 }
 
-
-
-
 .layout{
   display:flex;
   flex-direction: column;
@@ -29,7 +26,7 @@ body {
 }
 
 
-.logo-fixed {
+.logo-fixed {  
   position: fixed;
   top: 7px;       
   left: 200px;    
@@ -37,15 +34,12 @@ body {
   z-index: 1;   
 }
 
-
 .sidebar-title {
   color: #ECEBE2;
-  font-size: 20px;
   font-family: "Bungee";
   margin-left: 10px;
+  font-size: 26px;
 }
-
-
 
 .link {
   color: #ECEBE2;
@@ -55,37 +49,20 @@ body {
 h1 {
   align-items: center;
   text-align: center;
-  font-size: 30px;
   text-decoration-line: none;
   font-family: "Bungee";
 }
 .main-layout {
   display: flex;
   margin-left: 220px;
-  /* min-height: 100%; */
+
 }
-
-/* .menubar {
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  width: 200px;
-  background-color: #95A8AC;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-} */
-
 
 .menubar .header {
   display: flex;
   align-items: flex-end;
   padding-left: 0px;
   padding-right:0px;
-  /* padding-bottom: 20px; */
   border-bottom: 2px solid #223745;
   margin-bottom: 0px;
 }
@@ -97,7 +74,6 @@ h1 {
   height: 100vh;
   width: 240px;
   background-color: #95A8AC;
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -116,7 +92,7 @@ h1 {
   width: 100%;
   padding-top: 80px;
   padding: 12px;
-  background-color: #ECEBE2;
+  background-color: #FFFFF0;
   color: #223745;
   border: 2px solid #223745;
   border-radius: 8px;
@@ -132,16 +108,64 @@ h1 {
   color: #ECEBE2;
 }
 
-.homeImg {
-  margin: 35px 15px 20px 15px;
+.menubar-message {
+  padding: 20px;
+  font-size: 15px;
+  font-family: "Copperplate", fantasy;
+  color: white;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 2px dashed #223745;
+  margin: 10px 20px 30px 20px;
+  background-color: #A7B8BA;
+  border-radius: 10px;
 }
 
-.homeImg img {
-  width: 400px;
-  height: 400px;
-  margin: 10px 25px 10px 10px;
-  overflow: hidden;
-  float: left;
+
+#searchContainer {
+  display: none;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#searchInput {
+  padding: 10px;
+  width: 80%;
+  max-width: 220px;
+  border: 2px solid #223745;
+  border-radius: 8px;
+  font-family: "Copperplate", fantasy;
+  background-color: #ECEBE2;
+  color: #223745;
+}
+
+#searchButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid #223745;
+  background-color: #ECEBE2;
+  color: #223745;
+  font-family: "Copperplate", fantasy;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#searchButton:hover {
+  background-color: #223745;
+  color: #ECEBE2;
+}
+
+.no-match {
+  display: none;
+  font-family: "Copperplate", fantasy;
+  font-size: 20px;
+  color: #223745;
+  margin-top: 100px;
+  margin-left: 100px;
+  padding: 20px; */
 }
 
 #card-container {
@@ -156,6 +180,7 @@ h1 {
  .card {
   width: 300px;
   border: 1px solid #223745;
+  background-color: #FFFFF0;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 5px;
@@ -182,7 +207,8 @@ h1 {
 
 .card img {
   width: 100%;
-  height: auto;
+  height:250px;
+  object-fit: cover;
   border: 2px solid #223745;
   border-radius: 4px;
   margin-bottom: 10px;

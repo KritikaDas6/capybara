@@ -1,29 +1,3 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
-
-
 class Dog{
   constructor(name, gender, age, size, image){
     this.name= name;
@@ -34,29 +8,28 @@ class Dog{
   }
 
   getGender(){
-    if(this.gender===true){  //js
+    if(this.gender===true){ 
       return "Female";
     }
     return "Male";
   }
 }
-
-
+let fosterMode = false;
 const fosterDogs = [
-  new Dog("Motley", true, 2, "Small", "https://placedog.net/400?id=1"),
-  new Dog("Nila", true, 5, "Big", "https://placedog.net/400?id=2"),
-  new Dog("Gilbert", true, 1, "Small", "https://placedog.net/400?id=3"),
+  new Dog("Motley", false, 4, "Small", "/assets/motley.png"),
+  new Dog("Nila", true, 8, "Big", "/assets/Nila.png"),
+  new Dog("Gilbert", false, 2, "Small", "/assets/gilbert.png"),
   new Dog("Milo", false, 6, "Big", "https://placedog.net/400?id=4"),
-  new Dog("Daisy", false, 3, "Medium", "https://placedog.net/400?id=5"),
-  new Dog("Sandie", true, 4, "Small", "https://placedog.net/400?id=6"),
-  new Dog("Ollie", false, 2, "Big", "https://placedog.net/400?id=7"),
-  new Dog("Harris", true, 1, "Small", "https://placedog.net/400?id=8"),
-  new Dog("Jaadu", false, 5, "Medium", "https://placedog.net/400?id=9"),
-  new Dog("Posie", false, 2, "Small", "https://placedog.net/400?id=10"),
-  new Dog("Nala", true, 6, "Big", "https://placedog.net/400?id=11"),
-  new Dog("Wall-e", false, 3, "Medium", "https://placedog.net/400?id=12"),
-  new Dog("Capy-pug", true, 1, "Small", "https://placedog.net/400?id=13"),
-  new Dog("Bailey", false, 4, "Big", "https://placedog.net/400?id=14"),
+  new Dog("Dixie", false, 3, "Small", "https://placedog.net/400?id=5"),
+  new Dog("Sandie", true, 4, "Small", "/assets/sandy.png"), 
+  new Dog("Ollie", false, 2, "Big", "/assets/yoga.png"),
+  new Dog("Harris", false, 2, "Small", "/assets/harris.png"),
+  new Dog("Jaadu", false, 1, "Small", "/assets/jaadu.png"),
+  new Dog("Posie", true, 2, "Small", "/assets/posie.png"),
+  new Dog("Nala", true, 6, "Big", "/assets/diva.png"),
+  new Dog("Wall-e", false, 3, "Medium", "/assets/sitting.png"),
+  new Dog("Sunny", true, 1, "Big", "/assets/chicken.png"),
+  new Dog("bailey", false, 4, "Big", "/assets/cook.png"),
   new Dog("Pintu", false, 3, "Medium", "https://placedog.net/400?id=15")
 ];
 
@@ -65,54 +38,17 @@ if (!templateCard) {
   console.error("TEMPLATE CARD NOT FOUND");
 }
 
-
 function showCards() {
   const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = ""; // Clear existing cards
+  cardContainer.innerHTML = ""; 
 
   for (let i = 0; i < fosterDogs.length; i++) {
-    // let title = titles[i];
-
-    // let imageURL = "";
-    // if (i === 0) {
-    //   imageURL = FRESH_PRINCE_URL;
-    // } else if (i === 1) {
-    //   imageURL = CURB_POSTER_URL;
-    // } else if (i === 2) {
-    //   imageURL = EAST_LOS_HIGH_POSTER_URL;
-    // }
-
     const dog = fosterDogs[i];
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, dog);    // Update title and image
-    cardContainer.appendChild(nextCard);           // Add to the DOM
+    const nextCard = templateCard.cloneNode(true); 
+    editCardContent(nextCard, dog);   
+    cardContainer.appendChild(nextCard); 
   }
 }
-
-function sortNames() {   //sorts from A to Z
-  // let letter_indx= fosterDogs[m].name[0]; 
-  let swap="";
-  for (let i = 0; i < fosterDogs.length-1; i++) {
-    for(let j=0; j< fosterDogs.length-i-1; j++){
-      if(fosterDogs[j].name.toLowerCase() > fosterDogs[j+1].name.toLowerCase()){  
-        swap= fosterDogs[j];
-        fosterDogs[j]= fosterDogs[j+1];
-        fosterDogs[j+1]=swap;
-      };
-    }
-  } 
-
-  for (let m = 0; m < fosterDogs.length; m++) {
-    const firstLetter = fosterDogs[m].name[0];
-    console.log(`Index ${m}: First letter = ${firstLetter}`);
-  }
-  showCards();
-}
-
-document.getElementById("sortButton").addEventListener("click", function (e) {
-  e.preventDefault();
-  sortNames();
-});
 
 function editCardContent(card, dog) {
   card.style.display = "block";
@@ -127,24 +63,160 @@ function editCardContent(card, dog) {
     <li><strong>Size:</strong> ${dog.size}</li>
   `;
   console.log("new card:", dog.name, "- html: ", card);
+
+
+  card.addEventListener("click", function () {
+    if (!fosterMode) return;
+    const confirmFoster = confirm(`Do you want to foster ${dog.name}?`);
+    if (confirmFoster) {
+      alert(
+        `Thank you for willing to be a part of their tales!\nWe will contact you regarding logistics.\nAs you have offered to foster ${dog.name}, we will remove their availability :)`
+      );
+      const index = fosterDogs.indexOf(dog);
+      if (index !== -1) {
+        fosterDogs.splice(index, 1);
+      }
+      fosterMode = false; 
+      showCards();
+    }
+  });
 }
 
+// sorts from A to Z
+function sortNames() {   
+  let swap="";
+  for (let i = 0; i < fosterDogs.length-1; i++) {
+    for(let j=0; j< fosterDogs.length-i-1; j++){
+      if(fosterDogs[j].name.toLowerCase() > fosterDogs[j+1].name.toLowerCase()){  
+        swap= fosterDogs[j];
+        fosterDogs[j]= fosterDogs[j+1];
+        fosterDogs[j+1]=swap;
+      };
+    }
+  } 
+  showCards();
+}
+
+ //sorts from young to old
+function sortAge() {  
+  let swap=-1;
+  for (let i = 0; i < fosterDogs.length-1; i++) {
+    for(let j=0; j< fosterDogs.length-i-1; j++){
+      if(fosterDogs[j].age > fosterDogs[j+1].age){  
+        swap= fosterDogs[j];
+        fosterDogs[j]= fosterDogs[j+1];
+        fosterDogs[j+1]=swap;
+      };
+    }
+  } 
+  showCards();
+}
+
+function sortFemale(){
+  const allCards = document.getElementById("card-container");
+  allCards.innerHTML = ""; 
+
+  for (let i = 0; i < fosterDogs.length; i++) {
+    const dog = fosterDogs[i];
+    if (dog.gender === true) {  
+      const femaleCard = templateCard.cloneNode(true);
+      editCardContent(femaleCard, dog);
+      allCards.appendChild(femaleCard);
+    }
+  }
+}
+
+function sortSmall(){
+  const allCards = document.getElementById("card-container");
+  allCards.innerHTML = ""; 
+
+  for (let i = 0; i < fosterDogs.length; i++) {
+    const dog = fosterDogs[i];
+    if (dog.size=== "Small") {  
+      const smallCard = templateCard.cloneNode(true);
+      editCardContent(smallCard, dog);
+      allCards.appendChild(smallCard);
+    }
+  }
+}
+
+function searchByName() {
+  let foundMatch = false;
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const allCards = document.getElementById("card-container");
+  const noMatch = document.getElementById("noName"); 
+  allCards.innerHTML = "";
+
+  for (let i = 0; i < fosterDogs.length; i++) {
+    const dog = fosterDogs[i];
+    if (dog.name.toLowerCase()===(input)) {
+      const matchCard = templateCard.cloneNode(true);
+      editCardContent(matchCard, dog);
+      allCards.appendChild(matchCard);
+      foundMatch= true;
+    }
+  }
+  if (!foundMatch) {
+    noMatch.style.display = "block"; 
+  }
+}
+
+function hideNoMatchMessage() {
+  const noMatch = document.getElementById("noName");
+  if (noMatch){
+    noMatch.style.display = "none";
+  } 
+}
+
+
+
+
+document.getElementById("sortNameButton").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  sortNames();
+});
+
+
+document.getElementById("sortAgeButton").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  sortAge();
+});
+
+document.getElementById("sortFemaleButton").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  sortFemale();
+});
+
+document.getElementById("sortSmallDogsButton").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  sortSmall();
+});
+
+document.getElementById("searchToggleButton").addEventListener("click", () => {
+  const searchDiv = document.getElementById("searchContainer");
+  if (searchDiv.style.display === "none") {
+    searchDiv.style.display = "block";
+  } else {
+    searchDiv.style.display = "none";
+  }
+  hideNoMatchMessage();
+});
+
+document.getElementById("searchButton").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  searchByName();
+});
+
+document.getElementById("selectFoster").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  fosterMode = true;
+  alert("Click on the dog you'd like to foster.");
+});
+
 document.addEventListener("DOMContentLoaded", showCards);
-
-
-
-
-// function quoteAlert() {
-//   console.log("Button Clicked!");
-//   alert(
-//     "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-//   );
-// }
-
-// function removeLastCard() {
-//   titles.pop();
-//   showCards();
-
-
-
-// }
