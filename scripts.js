@@ -16,8 +16,8 @@ class Dog{
 }
 let fosterMode = false;
 const fosterDogs = [
-  new Dog("Motley", false, 4, "Small", "https://kritikadas6.github.io/capybara/Assets/motley.png"),
-  new Dog("Nila", true, 8, "Big", "https://kritikadas6.github.io/capybara/Assets/Nila.png"),
+  new Dog("Motley", false, 4, "Small", "Assets/motley.png"),
+  new Dog("Nila", true, 8, "Big", "Assets/Nila.png"),
   new Dog("Gilbert", false, 2, "Small", "Assets/gilbert.png"),
   new Dog("Milo", false, 6, "Big", "https://placedog.net/400?id=4"),
   new Dog("Dixie", false, 3, "Small", "https://placedog.net/400?id=5"),
@@ -25,11 +25,11 @@ const fosterDogs = [
   new Dog("Ollie", false, 2, "Big", "./Assets/yoga.png"),
   new Dog("Harris", false, 2, "Small", "Assets/harris.png"),
   new Dog("Jaadu", false, 1, "Small", "Assets/jaadu.png"),
-  new Dog("Posie", true, 2, "Small", "https://kritikadas6.github.io/capybara/Assets/posie.png"),
-  new Dog("Nala", true, 6, "Big", "https://kritikadas6.github.io/capybara/Assets/diva.png"),
-  new Dog("Wall-e", false, 3, "Medium", "/Assets/sitting.png"),
+  new Dog("Posie", true, 2, "Small", "Assets/posie.png"),
+  new Dog("Nala", true, 6, "Big", "Assets/diva.png"),
+  new Dog("Wall-e", false, 3, "Medium", "Assets/sitting.png"),
   new Dog("Sunny", true, 1, "Big", "Assets/chicken.png"),
-  new Dog("bailey", false, 4, "Big", "https://kritikadas6.github.io/capybara/Assets/cook.png"),
+  new Dog("bailey", false, 4, "Big", "Assets/cook.png"),
   new Dog("Pintu", false, 3, "Medium", "https://placedog.net/400?id=15")
 ];
 
