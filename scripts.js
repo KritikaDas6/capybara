@@ -1,20 +1,23 @@
 class Dog{
-  constructor(name, gender, age, size, image){
+  constructor(name, gender, age, size, image, favorited){
     this.name= name;
     this.gender = gender;
-    this.age=age;
-    this.size=size;
+    this.age= age;
+    this.size= size;
     this.image= image;
+    this.favorited = false;
   }
 
   getGender(){
-    if(this.gender===true){ 
+    if(this.gender === true){ 
       return "Female";
     }
     return "Male";
   }
 }
+
 let fosterMode = false;
+
 const fosterDogs = [
   new Dog("Motley", false, 4, "Small", "Assets/motley.png"),
   new Dog("Nila", true, 8, "Big", "Assets/Nila.png"),
@@ -64,13 +67,28 @@ function editCardContent(card, dog) {
   `;
   console.log("new card:", dog.name, "- html: ", card);
 
+  const favButton = document.createElement("button");
+  favButton.classList.add("fav-btn");
+
+  favButton.innerHTML = '<i class="fas fa-paw"></i>';
+  favButton.style.color = dog.favorited ? "#223745": "#a0aab0";
+ 
+  favButton.addEventListener("click", function () {
+    dog.favorited = !dog.favorited;
+    favButton.innerHTML = '<i class="fas fa-paw"></i>';
+    favButton.style.color = dog.favorited ? "#223745": "#a0aab0";
+  }); 
+ 
+  card.querySelector(".card-content").appendChild(favButton);
+
+  card.querySelector(".card-content").prepend(favButton);
 
   card.addEventListener("click", function () {
     if (!fosterMode) return;
     const confirmFoster = confirm(`Do you want to foster ${dog.name}?`);
     if (confirmFoster) {
       alert(
-        `Thank you for willing to be a part of their tales!\nWe will contact you regarding logistics.\nAs you have offered to foster ${dog.name}, we will remove their availability :)`
+        `Thank you for willing to be a part of their tales!\nWe will contact you regarding logistics.\n\nAs you have offered to foster ${dog.name}, we will remove their availability :)`
       );
       const index = fosterDogs.indexOf(dog);
       if (index !== -1) {
@@ -85,33 +103,34 @@ function editCardContent(card, dog) {
 // sorts from A to Z
 function sortNames() {   
   let swap="";
-  for (let i = 0; i < fosterDogs.length-1; i++) {
-    for(let j=0; j< fosterDogs.length-i-1; j++){
-      if(fosterDogs[j].name.toLowerCase() > fosterDogs[j+1].name.toLowerCase()){  
+  for (let i = 0; i < fosterDogs.length - 1; i++) {
+    for(let j = 0; j < fosterDogs.length - i - 1; j++){
+      if(fosterDogs[j].name.toLowerCase() > fosterDogs[j + 1].name.toLowerCase()){  
         swap= fosterDogs[j];
-        fosterDogs[j]= fosterDogs[j+1];
-        fosterDogs[j+1]=swap;
+        fosterDogs[j]= fosterDogs[j + 1];
+        fosterDogs[j + 1] = swap;
       };
     }
   } 
   showCards();
 }
 
- //sorts from young to old
+//sorts from young to old
 function sortAge() {  
-  let swap=-1;
-  for (let i = 0; i < fosterDogs.length-1; i++) {
-    for(let j=0; j< fosterDogs.length-i-1; j++){
-      if(fosterDogs[j].age > fosterDogs[j+1].age){  
-        swap= fosterDogs[j];
-        fosterDogs[j]= fosterDogs[j+1];
-        fosterDogs[j+1]=swap;
+  let swap = -1;
+  for (let i = 0; i < fosterDogs.length - 1; i++) {
+    for(let j = 0; j < fosterDogs.length - i - 1; j++){
+      if(fosterDogs[j].age > fosterDogs[j + 1].age){  
+        swap = fosterDogs[j];
+        fosterDogs[j] = fosterDogs[j + 1];
+        fosterDogs[j + 1] = swap;
       };
     }
   } 
   showCards();
 }
 
+//finds and displays only female dogs
 function sortFemale(){
   const allCards = document.getElementById("card-container");
   allCards.innerHTML = ""; 
@@ -126,13 +145,14 @@ function sortFemale(){
   }
 }
 
+//finds and displays only small dogs
 function sortSmall(){
   const allCards = document.getElementById("card-container");
   allCards.innerHTML = ""; 
 
   for (let i = 0; i < fosterDogs.length; i++) {
     const dog = fosterDogs[i];
-    if (dog.size=== "Small") {  
+    if (dog.size === "Small") {  
       const smallCard = templateCard.cloneNode(true);
       editCardContent(smallCard, dog);
       allCards.appendChild(smallCard);
@@ -140,27 +160,39 @@ function sortSmall(){
   }
 }
 
+//searches for dog names
 function searchByName() {
-  let foundMatch = false;
   const input = document.getElementById("searchInput").value.toLowerCase();
   const allCards = document.getElementById("card-container");
   const noMatch = document.getElementById("noName"); 
   allCards.innerHTML = "";
+  let foundMatch = false;
 
   for (let i = 0; i < fosterDogs.length; i++) {
-    const dog = fosterDogs[i];
-    if (dog.name.toLowerCase()===(input)) {
+    const dogName = fosterDogs[i].name.toLowerCase();
+    let match = true;
+    for (let j = 0; j < input.length; j++) {
+      if (dogName[j] !== input[j]) {
+        match = false;
+        break;
+      }
+    }
+    if (match == true) {
       const matchCard = templateCard.cloneNode(true);
-      editCardContent(matchCard, dog);
+      editCardContent(matchCard, fosterDogs[i]);
       allCards.appendChild(matchCard);
-      foundMatch= true;
+      foundMatch = true;
     }
   }
+
   if (!foundMatch) {
     noMatch.style.display = "block"; 
+  } else {
+    noMatch.style.display = "none";
   }
 }
 
+//if searchbyName() can't find, display error message
 function hideNoMatchMessage() {
   const noMatch = document.getElementById("noName");
   if (noMatch){
@@ -168,15 +200,32 @@ function hideNoMatchMessage() {
   } 
 }
 
+//finds and displays only Pawed (liked) dogs
+function favorites(){
+  const allCards = document.getElementById("card-container");
+  allCards.innerHTML = ""; 
 
+  for (let i = 0; i < fosterDogs.length; i++) {
+    const dog = fosterDogs[i];
+    if (dog.favorited === true) {  
+      const likedCard = templateCard.cloneNode(true);
+      editCardContent(likedCard, dog);
+      allCards.appendChild(likedCard);
+    }
+  }
+}
 
+document.getElementById("searchButton").addEventListener("click", (e) => {
+  e.preventDefault();
+  hideNoMatchMessage();
+  searchByName();
+});
 
 document.getElementById("sortNameButton").addEventListener("click", (e) => {
   e.preventDefault();
   hideNoMatchMessage();
   sortNames();
 });
-
 
 document.getElementById("sortAgeButton").addEventListener("click", (e) => {
   e.preventDefault();
@@ -196,20 +245,10 @@ document.getElementById("sortSmallDogsButton").addEventListener("click", (e) => 
   sortSmall();
 });
 
-document.getElementById("searchToggleButton").addEventListener("click", () => {
-  const searchDiv = document.getElementById("searchContainer");
-  if (searchDiv.style.display === "none") {
-    searchDiv.style.display = "block";
-  } else {
-    searchDiv.style.display = "none";
-  }
-  hideNoMatchMessage();
-});
-
-document.getElementById("searchButton").addEventListener("click", (e) => {
+document.getElementById("pawed").addEventListener("click", (e) => {
   e.preventDefault();
   hideNoMatchMessage();
-  searchByName();
+  favorites(); 
 });
 
 document.getElementById("selectFoster").addEventListener("click", (e) => {

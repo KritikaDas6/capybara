@@ -9,14 +9,12 @@
     
     <title> Foster Tails </title>
    
-  
     <link href="style.css"
     rel="stylesheet" 
     type="text/css" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
  
   <body>
@@ -27,23 +25,25 @@
         </div>
         <img class="logo-fixed" src="Assets/logo.png" height="14%">
         <div class="menu-buttons">
-        <button class="tablink" id="sortNameButton">Sort Alphabetical</button>
-        <button class="tablink" id="sortAgeButton">Youngest to Oldest</button>
-        <button class="tablink" id="sortFemaleButton">Only Females</button>
-        <button class="tablink" id="sortSmallDogsButton">Only Small Dogs</button>
-        
-        <button class="tablink" id="searchToggleButton">Search by Name</button>
+          <div class="tablink search-box">
+            <input type="text" id="searchInput" placeholder="Enter name..." />
+            <button id="searchButton">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <button class="tablink" id="sortNameButton">Sort Alphabetical</button>
+          <button class="tablink" id="sortAgeButton">Youngest to Oldest</button>
+          <button class="tablink" id="sortFemaleButton">Only Females</button>
+          <button class="tablink" id="sortSmallDogsButton">Only Small Dogs</button>
+          <button class="tablink" id="pawed">Your Pawed (liked)</button>
+          <button class="tablink" id="selectFoster">Select Dog to Foster</button>
+        </div>
 
-        <div id="searchContainer" style="display: none; margin-top: 10px;">
-          <input type="text" id="searchInput" placeholder="Enter dog name..." />
-          <button id="searchButton">Search</button>
-        </div>
-        <button class="tablink" id="selectFoster">Select Dog to Foster</button>
-        </div>
         <p class="menubar-message">
-          Every foster dog deserves a second chance. <br />
-          Thank you to our amazing volunteers for helping them find their forever homes!
+          Every foster adds a new chapter to our Foster Tails. </br>
+          Thank you for helping write their journey home!
         </p>
+        
       </div>
     
 
@@ -53,11 +53,11 @@
           <div class="card-content">
             <h2>Foster Dog Name</h2>
             <img src="" alt="Poster" /> 
-              <ul>
+            <ul>
               <li>Age</li>
               <li>Gender</li>
               <li>Size</li>
-              </ul>
+            </ul>
           </div>
         </div>  
       </div>

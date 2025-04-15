@@ -1,6 +1,7 @@
 html, body{
   height: 100%;
 }
+
 body {
   height: 100%;
   width: 100%;
@@ -83,6 +84,7 @@ h1 {
 
 .menu-buttons {
   padding: 20px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -108,6 +110,52 @@ h1 {
   color: #ECEBE2;
 }
 
+.search-box {
+  width: 100%;
+  background-color: #FFFFF0;
+  border: 2px solid #223745;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-family: "Copperplate", fantasy;
+  box-sizing: border-box;
+}
+
+.search-box:hover {
+  background-color: #FFFFF0;
+  color: #ECEBE2;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 0;
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+  font-family: "Copperplate", fantasy;
+  color: #223745;
+  outline: none;
+}
+
+#searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #223745;
+  font-size: 16px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchButton:hover {
+  color: #223745;
+  transform: scale(2.0);
+}
+
 .menubar-message {
   padding: 20px;
   font-size: 15px;
@@ -115,47 +163,10 @@ h1 {
   color: white;
   text-align: left;
   line-height: 1.5;
-  border-top: 2px dashed #223745;
-  margin: 10px 20px 30px 20px;
+  border: 2px dashed #223745;
+  margin: 0px 20px 30px 20px;
   background-color: #A7B8BA;
   border-radius: 10px;
-}
-
-
-#searchContainer {
-  display: none;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-#searchInput {
-  padding: 10px;
-  width: 80%;
-  max-width: 220px;
-  border: 2px solid #223745;
-  border-radius: 8px;
-  font-family: "Copperplate", fantasy;
-  background-color: #ECEBE2;
-  color: #223745;
-}
-
-#searchButton {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 2px solid #223745;
-  background-color: #ECEBE2;
-  color: #223745;
-  font-family: "Copperplate", fantasy;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-#searchButton:hover {
-  background-color: #223745;
-  color: #ECEBE2;
 }
 
 .no-match {
@@ -174,7 +185,6 @@ h1 {
   padding-left: 60px;
   flex-wrap: wrap;
   flex: 1;
-
 }
 
  .card {
@@ -195,6 +205,7 @@ h1 {
   padding: 20px;
   font-family: "Copperplate", Patua-one;
   color: #223745;
+  position: relative;
 }
 
 .card-content h2 {
@@ -212,4 +223,14 @@ h1 {
   border: 2px solid #223745;
   border-radius: 4px;
   margin-bottom: 10px;
+}
+
+.fav-btn {
+  position: absolute;
+  bottom:6px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }
