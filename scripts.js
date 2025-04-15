@@ -2,8 +2,8 @@ class Dog{
   constructor(name, gender, age, size, image, favorited){
     this.name= name;
     this.gender = gender;
-    this.age= age;
-    this.size= size;
+    this.age = age;
+    this.size = size;
     this.image= image;
     this.favorited = false;
   }
